@@ -39,6 +39,33 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## CI/CD Pipeline with GitHub Actions
+
+This project has a CI/CD pipeline set up with [GitHub Actions](https://github.com/features/actions). This pipeline automates testing, linting, building, and deploying the application.
+
+### Pipeline Overview
+
+The CI/CD pipeline consists of the following stages:
+
+- **Build**: The frontend is built using Node.js (version 16) and dependencies are installed from `package-lock.json`.
+- **Audit**: Security vulnerabilities in dependencies are checked using `npm audit`.
+- **Lint**: The code is linted to ensure it follows the defined code style.
+- **Test**: Unit tests are run to verify the functionality of the application.
+- **Static Analysis**: Static code analysis is performed using [CodeQL](https://github.com/github/codeql).
+- **Deploy**: The built frontend is deployed to GitHub Pages.
+- **Verify**: After deployment, a smoke test is run to verify the deployment was successful.
+
+### How the CI/CD Pipeline is Triggered
+
+The pipeline is triggered automatically when:
+- A **pull request** is made.
+- A **push** is made to the `main` branch (or a specified branch like `olt` in some cases).
+
+### How to View Pipeline Status
+
+You can view the status and results of the pipeline runs in the **Actions** tab of this GitHub repository.
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
